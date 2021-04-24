@@ -18,10 +18,12 @@ private val DarkColorPalette = darkColors(
     surface = GREY1000,
     background = Color.Black,
 
-    onPrimary = Color.Black,
+    onPrimary = Color.White,
     onSecondary = Color.White,
     onBackground = Color.White,
-    onSurface = Color.White
+    onSurface = Color.White,
+    onError = RED700,
+
 )
 
 private val LightColorPalette = lightColors(
@@ -32,11 +34,12 @@ private val LightColorPalette = lightColors(
     background = BLUE50,
     surface = Color.White,
     onPrimary = Color.White,
-    onSecondary = Color.Black,
-    onBackground = Color.Black,
-    onSurface = Color.Black,
+    onSecondary = Color.White,
+    onBackground = Color.White,
+    onSurface = Color.White,
+    onError = RED700
 
-    )
+)
 
 @Composable
 fun WalletTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
@@ -48,7 +51,7 @@ fun WalletTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composable
 
     MaterialTheme(
         colors = colors,
-        typography =Typography,
+        typography = Typography,
         shapes = Shapes
     ) {
         Box(

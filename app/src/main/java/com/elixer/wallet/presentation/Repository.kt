@@ -13,6 +13,10 @@ class Repository @Inject constructor(val dogDao: RecipeDao) {
     }
 
     fun getTransactions(): Flow<List<Transaction>> {
-        return dogDao.getTransactions() // Get searched dogs from Room Database
+        return dogDao.getTransactions()
+    }
+
+    fun getTotalExpense(): Flow<List<Transaction>> {
+        return dogDao.getTransactions()
     }
 }

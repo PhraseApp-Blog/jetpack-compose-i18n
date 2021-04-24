@@ -17,4 +17,10 @@ interface RecipeDao {
     @Query("SELECT * FROM recipes")
     fun getTransactions(): Flow<List<Transaction>>
 
+    @Query("SELECT * FROM recipes")
+    fun getTotalIncome(): Flow<List<Transaction>>
+
+    @Query("SELECT * FROM recipes WHERE type = 'EXPENSE' ")
+    fun getTotalExpenditure(): Flow<List<Transaction>>
+
 }

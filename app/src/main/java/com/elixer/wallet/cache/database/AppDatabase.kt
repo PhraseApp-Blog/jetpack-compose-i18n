@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase
 import com.elixer.wallet.cache.RecipeDao
 import com.elixer.wallet.model.Transaction
 
-@Database(entities = [Transaction::class ], version = 1)
+@Database(entities = [Transaction::class ], version = 2)
 abstract class AppDatabase: RoomDatabase() {
 
     abstract fun recipeDao(): RecipeDao
