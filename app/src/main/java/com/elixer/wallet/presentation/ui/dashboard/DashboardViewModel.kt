@@ -45,21 +45,9 @@ class DashboardViewModel @Inject constructor(private val repository: Repository)
                         }
                     }
                 }
-//                netExpence.value = "$expense"
-//                netIncome.value = "$income"
-//                balance.value = (income-expense).toString()
-
-
-                netExpence.value = numberFormat.format(expense)
-                netIncome.value = numberFormat.format(income)
-
-//                balance.value = numberFormat.format(income-expense)
-
-                val netBalance = income - expense
-                val formattedCurrency = NumberFormat.getCurrencyInstance().format(netBalance)
-
-                balance.value = formattedCurrency
-
+                netExpence.value = "- $expense"
+                netIncome.value = "$income"
+                balance.value = (income-expense).toString()
             }
         }
     }

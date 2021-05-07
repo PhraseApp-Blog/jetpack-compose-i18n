@@ -14,10 +14,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.elixer.wallet.model.TYPE
 import com.elixer.wallet.model.Transaction
-import java.text.NumberFormat
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 
 @Composable
 fun TransactionItem(transaction: Transaction) {
@@ -37,10 +33,9 @@ fun TransactionItem(transaction: Transaction) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             transactionInfo(transaction = transaction)
-            val amount = if (transaction.type.equals(TYPE.INCOME)) transaction.amount else transaction.amount.unaryMinus()
-            val formattedAmount = NumberFormat.getInstance().format(amount);
+            val amount = if (transaction.type.equals(TYPE.INCOME)) "${transaction.amount}" else "- ${transaction.amount}"
             Text(
-                text = formattedAmount,
+                text = amount,
                 fontSize = 20.sp,
                 textAlign = TextAlign.End,
                 modifier = Modifier.align(Alignment.CenterVertically)
@@ -88,12 +83,9 @@ fun transactionInfo(transaction: Transaction) {
             overflow = TextOverflow.Ellipsis
 
         )
-        val dateFormatter: DateTimeFormatter = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT)
-        val transactionDate: LocalDate = LocalDate.ofEpochDay(transaction.dateAdded / 86400000L)
-        val formattedTransactionDate: String = transactionDate.format(dateFormatter)
 
         Text(
-            text = formattedTransactionDate,
+            text = transaction.dateAdded.toString(),
             fontSize = 16.sp,
             textAlign = TextAlign.Center,
             modifier = Modifier.align(Alignment.Start),
