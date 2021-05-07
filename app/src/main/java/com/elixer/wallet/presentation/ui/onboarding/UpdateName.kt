@@ -11,7 +11,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -28,7 +27,7 @@ fun UpdateName(
     Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Surface(
             color = Color.DarkGray, modifier = Modifier
-                .weight(7f)
+                .height(600.dp)
                 .fillMaxWidth(),
             shape = RoundedCornerShape(30.dp).copy(
                 topStart = ZeroCornerSize,
@@ -44,13 +43,13 @@ fun UpdateName(
                 Spacer(modifier = Modifier.height(50.dp))
                 Image(
                     painter = painterResource(R.drawable.bank_note),
-                    contentDescription = stringResource(R.string.image_description_bank_not),
+                    contentDescription = null,
                     Modifier
                         .height(100.dp)
                         .width(100.dp)
                 )
                 Text(
-                    text = stringResource(id = R.string.enter_name),
+                    text = "Please enter your name",
                     style = MaterialTheme.typography.body1,
                     color = Color.White
                 )
@@ -72,19 +71,17 @@ fun UpdateName(
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .weight(3f)
         ) {
             Button(onClick = decreasePageCount) {
                 Text(
-                    text = stringResource(id = R.string.button_back),
+                    text = "Back",
                     style = MaterialTheme.typography.h6
                 )
             }
             Spacer(modifier = Modifier.padding(60.dp))
             Button(onClick = navigateToDashboard) {
                 Text(
-                    text = stringResource(id = R.string.button_next),
+                    text = "Next",
                     style = MaterialTheme.typography.h6
                 )
             }

@@ -14,10 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.elixer.wallet.R
 
 @Composable
 fun WalletSummary(balance: String, expense: String, income: String) {
@@ -43,18 +41,17 @@ fun WalletSummary(balance: String, expense: String, income: String) {
                     .fillMaxWidth()
             ) {
                 Text(
-                    text = stringResource(R.string.balance),
+                    text = "BALAnCE",
                     style = MaterialTheme.typography.overline,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-//                    text = "$ $balance",
-                    text = balance,
+                    text = "$ $balance",
                     style = MaterialTheme.typography.h3,
                     fontWeight = FontWeight.Bold
                 )
                 Text(
-                    text = stringResource(R.string.total_income),
+                    text = "TOTAL INCOME",
                     style = MaterialTheme.typography.overline,
                     modifier = Modifier.align(Alignment.End)
                 )
@@ -64,7 +61,7 @@ fun WalletSummary(balance: String, expense: String, income: String) {
                     modifier = Modifier.align(Alignment.End)
                 )
                 Text(
-                    text = stringResource(R.string.total_expense),
+                    text = "TOTAL EXPENSE",
                     style = MaterialTheme.typography.overline,
                     modifier = Modifier.align(Alignment.End)
                 )

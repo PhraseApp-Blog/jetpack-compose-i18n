@@ -1,34 +1,6 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name" translatable="false">wallet</string>
-    <string name="lorem_ipso" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget magna fermentum iaculis eu non diam phasellus. Suspendisse faucibus interdum posuere lorem ipsum dolor. Ut lectus arcu bibendum at varius vel pharetra vel turpis. Sed ullamcorper morbi tincidunt ornare massa eget. Dictumst quisque sagittis purus sit amet volutpat consequat mauris nunc. Egestas pretium aenean pharetra magna ac placerat vestibulum lectus mauris. Habitant morbi tristique senectus et. Sem nulla pharetra diam sit amet nisl. Vulputate ut pharetra sit amet. Euismod in pellentesque massa placerat duis ultricies lacus sed turpis. Netus et malesuada fames ac. Elit duis tristique sollicitudin nibh sit amet commodo nulla facilisi. Suspendisse ultrices gravida dictum fusce ut placerat orci nulla pellentesque. Vitae justo eget magna fermentum iaculis eu non diam phasellus. A erat nam at lectus urna duis convallis convallis. Mauris commodo quis imperdiet massa tincidunt nunc pulvinar sapien et.\n"
-                            "\n""Pellentesque dignissim enim sit amet venenatis urna cursus. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Turpis tincidunt id aliquet risus. Amet consectetur adipiscing elit duis tristique sollicitudin. Proin sed libero enim sed faucibus turpis in eu. Placerat orci nulla pellentesque dignissim enim. Bibendum ut tristique et egestas. Id semper risus in hendrerit gravida rutrum. Amet justo donec enim diam vulputate ut pharetra. Maecenas pharetra convallis posuere morbi leo. In tellus integer feugiat scelerisque.\n "\n Quis varius quam quisque id. Purus ut faucibus pulvinar elementum integer enim neque volutpat ac. Malesuada fames ac turpis egestas integer eget aliquet. Scelerisque in dictum non consectetur a erat nam at. Quam lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Tristique senectus et netus et malesuada fames ac. Dis parturient montes nascetur ridiculus mus mauris vitae ultricies leo. Vel quam elementum pulvinar etiam non quam. At tempor commodo ullamcorper a lacus vestibulum. Purus sit amet luctus venenatis. Et molestie ac feugiat sed.\n "\n Leo integer malesuada nunc vel risus commodo viverra maecenas accumsan. Purus sit amet volutpat consequat mauris nunc congue nisi. Venenatis a condimentum vitae sapien pellentesque habitant morbi. Et tortor at risus viverra adipiscing at in. Amet nulla facilisi morbi tempus iaculis urna id volutpat lacus. Sem integer vitae justo eget magna fermentum iaculis eu non. Egestas tellus rutrum tellus pellentesque eu. Bibendum est ultricies integer quis auctor elit sed. Donec adipiscing tristique risus nec feugiat in fermentum posuere urna. Vel orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec. Blandit aliquam etiam erat velit scelerisque in.\n"
-                            "\n""Dolor purus non enim praesent. Tempor id eu nisl nunc mi ipsum faucibus. Adipiscing vitae proin sagittis nisl rhoncus mattis. Elit sed vulputate mi sit amet. Magna sit amet purus gravida quis. Egestas fringilla phasellus faucibus scelerisque. Arcu risus quis varius quam quisque. Et ultrices neque ornare aenean euismod elementum nisi quis. Aliquam nulla facilisi cras fermentum odio eu. Et malesuada fames ac turpis egestas. Amet consectetur adipiscing elit ut aliquam. In aliquam sem fringilla ut morbi tincidunt. Pulvinar mattis nunc sed blandit libero volutpat sed. Cras adipiscing enim eu turpis egestas pretium aenean."</string>
 
-
-
-    <string name="button_begin">Let\'s Begin</string>
-    <string name="button_back">Back</string>
-    <string name="button_next">Next</string>
-    <string name="i_agree">I Agree</string>
-    <string name="terms_and_conditions">Terms And Conditions</string>
-    <string name="button_add_income">Add Income</string>
-    <string name="button_add_expense">Add Expense</string>
-
-    <string name="greeting">Hello, <xliff:g name="name" example="Joe">%s</xliff:g> </string>
-    <string name="balance">BALANCE</string>
-    <string name="total_income">TOTAL INCOME</string>
-    <string name="total_expense">TOTAL EXPENSE</string>
-
-    <string name="landing_url">
-    Visit us at <xliff:g id="application_homepage">https://xyz.com/</xliff:g> to know more.
-</string>
-    <string name="enter_name">Please enter your name</string>
-    <string name="image_description_bank_not">Bank Note</string>
-
-    <plurals name="heading_transaction">
-        <item quantity="one">Transaction</item>
-        <item quantity="other">Transactions</item>
-    </plurals>
 
 </resources>

@@ -8,7 +8,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -19,29 +18,18 @@ import com.elixer.wallet.model.Transaction
 fun TransactionItem(transaction: Transaction) {
 
 
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 10.dp)
-    ) {
+    Row(Modifier.fillMaxWidth().padding(horizontal = 10.dp, vertical = 10.dp)) {
         emoji(emojiCode = transaction.emojiCode)
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth(),
-            //Evenly add space between the components
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            transactionInfo(transaction = transaction)
-            val amount = if (transaction.type.equals(TYPE.INCOME)) "${transaction.amount}" else "- ${transaction.amount}"
-            Text(
-                text = amount,
-                fontSize = 20.sp,
-                textAlign = TextAlign.End,
-                modifier = Modifier.align(Alignment.CenterVertically)
-            )
-        }
-
+        transactionInfo(transaction = transaction)
+        Spacer(modifier = Modifier.width(120.dp))
+        val amount =
+            if (transaction.type == TYPE.INCOME.toString()) "${transaction.amount}" else "- ${transaction.amount}"
+        Text(
+            text = amount,
+            fontSize = 20.sp,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.align(Alignment.CenterVertically)
+        )
     }
 }
 
@@ -57,9 +45,7 @@ fun emoji(emojiCode: String) {
             text = emojiCode,
             fontSize = 30.sp,
             textAlign = TextAlign.Center,
-            modifier = Modifier
-                .align(Alignment.Center)
-                .padding(bottom = 2.dp)
+            modifier = Modifier.align(Alignment.Center).padding(bottom = 2.dp)
         )
     }
 }
@@ -67,30 +53,19 @@ fun emoji(emojiCode: String) {
 @Composable
 fun transactionInfo(transaction: Transaction) {
 
-    Column(
-        verticalArrangement = Arrangement.Center,
-        modifier = Modifier
-            .padding(horizontal = 10.dp)
-            //This will set a max width of this column to be 70% of the parent
-            .fillMaxSize(0.7f)
-    ) {
+    Column( verticalArrangement = Arrangement.Center,modifier = Modifier.padding(horizontal = 10.dp) ) {
         Text(
             text = transaction.title,
             fontSize = 18.sp,
-            textAlign = TextAlign.Start,
-            modifier = Modifier.align(Alignment.Start),
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis
-
+            textAlign = TextAlign.Center,
+            modifier = Modifier.align(Alignment.Start)
         )
 
         Text(
             text = transaction.dateAdded.toString(),
             fontSize = 16.sp,
             textAlign = TextAlign.Center,
-            modifier = Modifier.align(Alignment.Start),
-            maxLines = 1,
-            overflow = TextOverflow.Ellipsis
+            modifier = Modifier.align(Alignment.Start)
         )
 
     }
@@ -99,15 +74,6 @@ fun transactionInfo(transaction: Transaction) {
 @Preview
 @Composable
 fun DefaultPreview() {
-    TransactionItem(
-        transaction =
-        Transaction(
-            id = 0,
-            title = "Car Wash",
-            amount = 100,
-            type = "INCOME",
-            dateAdded = 0L,
-            emojiCode = "🚗"
-        )
-    )
+    TransactionItem(transaction =
+    Transaction(id = 0,title = "Car Wash", amount = 100, type = "INCOME", dateAdded = 0L,emojiCode = "🚗"))
 }
