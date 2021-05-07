@@ -1,6 +1,7 @@
 package com.elixer.wallet.di
 
 import android.content.Context
+import android.content.SharedPreferences
 import com.elixer.wallet.presentation.BaseApplication
 import dagger.Module
 import dagger.Provides
@@ -18,5 +19,4 @@ object AppModule {
     fun provideApplication(@ApplicationContext app: Context): BaseApplication {
         return app as BaseApplication
     }
-
 }

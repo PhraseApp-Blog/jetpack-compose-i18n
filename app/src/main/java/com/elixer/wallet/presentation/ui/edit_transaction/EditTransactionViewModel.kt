@@ -17,7 +17,7 @@ class EditTransactionViewModel @Inject constructor(private val repository: Repos
     ViewModel() {
 
     val title: MutableState<String> = mutableStateOf("")
-    val amount: MutableState<String> = mutableStateOf("0")
+    val amount: MutableState<String> = mutableStateOf("")
     val emoji: MutableState<String> = mutableStateOf("💰")
 
     fun setTitle(title: String) {
@@ -25,8 +25,8 @@ class EditTransactionViewModel @Inject constructor(private val repository: Repos
     }
 
     fun setAmount(amount: String) {
-        val number = amount.toIntOrNull()
-        this.amount.value = if (number == null) "0" else amount
+//        val number = amount.toIntOrNull()
+        this.amount.value = amount
     }
 
     fun setEmoji(emoji: String) {
@@ -38,7 +38,7 @@ class EditTransactionViewModel @Inject constructor(private val repository: Repos
             repository.addToDatabase(
                 Transaction(
                     title = title.value, amount = (amount.value.toInt()), emojiCode = emoji.value,
-                    dateAdded = System.currentTimeMillis() / 1000, type = TYPE.EXPENSE.toString()
+                    dateAdded = System.currentTimeMillis(), type = TYPE.EXPENSE.toString()
                 )
             )
         }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="button_begin">comencemos</string>
+    <string name="button_back">Volver</string>
+    <string name="button_next">Siguiente</string>
+    <string name="i_agree">Estoy de acuerdo</string>
+    <string name="terms_and_conditions">Términos y condiciones</string>
+    <string name="button_add_income">Añadir ingresos</string>
+    <string name="button_add_expense">Añadir gastos</string>
+    <string name="greeting">Hola <xliff:g name="name" example="Joe">%s</xliff:g> </string>
+    <string name="balance">BALANCE</string>
+    <string name="total_income">Ingresos totales</string>
+    <string name="total_expense">Gasto total</string>
+    <string name="landing_url">
+        Visítenos en  <xliff:g id="application_homepage">https://xyz.com/</xliff:g> para saber más</string>
+
+    <string name="enter_name">por favor ingrese el nombre</string>
+
+    <plurals name="heading_transaction">
+        <item quantity="one">Transacción</item>
+        <item quantity="other">Transacciones</item>
+    </plurals>
+    <string name="image_description_bank_not">Billete de banco</string>
+</resources>

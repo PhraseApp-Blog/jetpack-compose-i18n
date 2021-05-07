@@ -1,25 +1,22 @@
 package com.elixer.wallet.presentation.ui.dashboard
 
+import androidx.annotation.PluralsRes
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.elixer.wallet.R
 import com.elixer.wallet.model.Transaction
 import com.elixer.wallet.presentation.navigation.Screen
 import com.elixer.wallet.presentation.theme.WalletTheme
@@ -34,9 +31,10 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 fun DashboardScreen(
     viewModel: DashboardViewModel,
     onNavigateToEditTransactionScreen: (String) -> Unit,
+    displayName: String
 ) {
 
-    var expanded = remember { mutableStateOf(false) }
+//    var expanded = remember { mutableStateOf(false) }
     val transactions = viewModel.transactions.value
     val expense = viewModel.netExpence.value
     val income = viewModel.netIncome.value
@@ -48,40 +46,30 @@ fun DashboardScreen(
     }
 
     WalletTheme() {
-        Scaffold(
-            floatingActionButton = {
-                FloatingActionButton(
-                    onClick = { navigateToAddTransaction() },
-                    backgroundColor = MaterialTheme.colors.primary,
-                ) { Icon(Icons.Filled.Add, "Add transaction") }
-            }) {
-
+        Scaffold(floatingActionButton = { floatingButton { navigateToAddTransaction() } }) {
             Surface(modifier = Modifier.fillMaxSize()) {
-                Column(modifier = Modifier.padding(horizontal = 15.dp)) {
+                Column(
+                    modifier = Modifier
+                        .padding(horizontal = 15.dp)
+                ) {
 
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Text(text = "Hello, Jane", style = MaterialTheme.typography.h3)
-                        Spacer(modifier = Modifier.weight(1f))
+                    Text(
+                        text = stringResource(R.string.greeting,displayName),
+                        style = MaterialTheme.typography.h3,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.padding(5.dp)
+                    )
 
-                        Column() {
-                            IconButton(onClick = { expanded.value = true }) {
-                                Icon(
-                                    Icons.Filled.Settings,
-                                    "Settings",
-                                    Modifier.then(Modifier.size(40.dp)),
-                                    tint = Color.White
-                                )
-                            }
-                            Dropdown(expanded.value, onDismiss = { expanded.value = it })
-                        }
-
-                    }
-
-                    Spacer(modifier = Modifier.padding(top = 20.dp))
                     WalletSummary(balance = balance, expense, income = income)
-                    Spacer(modifier = Modifier.padding(top = 10.dp))
-                    Text(text = "Transactions", style = MaterialTheme.typography.h5)
-                    Spacer(modifier = Modifier.padding(top = 10.dp))
+                    verticalSpacing()
+                    Text(
+                        text = quantityStringResource(
+                            R.plurals.heading_transaction,
+                            transactions.size
+                        ), style = MaterialTheme.typography.h5
+                    )
+                    verticalSpacing()
                     transactionList(transactions = transactions)
                 }
             }
@@ -89,25 +77,18 @@ fun DashboardScreen(
     }
 }
 
+//Custom function to get plural resources
 @Composable
-fun Dropdown(isExpanded: Boolean, onDismiss: (Boolean) -> Unit) {
-    DropdownMenu(
-        expanded = isExpanded,
-        onDismissRequest = { onDismiss(false) }
-    ) {
-        DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
-            Text("English")
-        }
-        DropdownMenuItem(onClick = { /* Handle settings! */ }) {
-            Text("French")
-        }
-        Divider()
-        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
-            Text("Default")
-        }
-    }
+fun quantityStringResource(@PluralsRes id: Int, quantity: Int): String {
+    return LocalContext.current.resources.getQuantityString(id, quantity)
 }
 
+@Composable
+fun verticalSpacing() {
+    Spacer(modifier = Modifier.padding(top = 20.dp))
+}
+
+@ExperimentalFoundationApi
 @Composable
 fun transactionList(transactions: List<Transaction>) {
 
@@ -126,58 +107,42 @@ fun transactionList(transactions: List<Transaction>) {
 }
 
 @Composable
-fun WalletSummary(balance: String, expense: String, income: String) {
-    Card(shape = RoundedCornerShape(15.dp)) {
-        val gradient = Brush.verticalGradient(
-            listOf(
-                Color(0xFF9456EE), Color(0xFF8D4BEE),
-                Color(0xFF6211DA), Color(0xFF540EBB), Color(0xFF420A96)
-            )
-        )
-        val modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp)
-        Box(
-            modifier = Modifier
-                .background(gradient)
-                .then(modifier)
-        ) {
-            Column(
-                Modifier
-                    .padding(10.dp)
-                    .fillMaxWidth()
-            ) {
-                Text(
-                    text = "BALANCE",
-                    style = MaterialTheme.typography.overline,
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "$ $balance",
-                    style = MaterialTheme.typography.h3,
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "TOTAL INCOME",
-                    style = MaterialTheme.typography.overline,
-                    modifier = Modifier.align(Alignment.End)
-                )
-                Text(
-                    text = income,
-                    style = MaterialTheme.typography.h4,
-                    modifier = Modifier.align(Alignment.End)
-                )
-                Text(
-                    text = "TOTAL EXPENSE",
-                    style = MaterialTheme.typography.overline,
-                    modifier = Modifier.align(Alignment.End)
-                )
-                Text(
-                    text = expense,
-                    style = MaterialTheme.typography.h4,
-                    modifier = Modifier.align(Alignment.End)
-                )
-            }
-        }
-    }
+fun floatingButton(onClick: () -> Unit) {
+
+    FloatingActionButton(
+        onClick = onClick,
+        backgroundColor = MaterialTheme.colors.primary,
+    ) { Icon(Icons.Filled.Add, "Add transaction") }
 }
+
+
+//@Composable
+//fun settingsIcon(expanded: MutableState<Boolean>) {
+//    IconButton(onClick = { expanded.value = true }) {
+//        Icon(
+//            Icons.Filled.Settings,
+//            "Settings",
+//            Modifier.then(Modifier.size(40.dp)),
+//            tint = Color.White
+//        )
+//    }
+//}
+
+//@Composable
+//fun Dropdown(isExpanded: Boolean, onDismiss: (Boolean) -> Unit) {
+//    DropdownMenu(
+//        expanded = isExpanded,
+//        onDismissRequest = { onDismiss(false) }
+//    ) {
+//        DropdownMenuItem(onClick = { /* Handle refresh! */ }) {
+//            Html.kt("English")
+//        }
+//        DropdownMenuItem(onClick = { /* Handle settings! */ }) {
+//            Html.kt("French")
+//        }
+//        Divider()
+//        DropdownMenuItem(onClick = { /* Handle send feedback! */ }) {
+//            Html.kt("Default")
+//        }
+//    }
+//}

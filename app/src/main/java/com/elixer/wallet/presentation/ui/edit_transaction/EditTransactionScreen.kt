@@ -11,19 +11,24 @@ import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
+import com.elixer.wallet.R
 import com.elixer.wallet.presentation.navigation.Screen
 import com.elixer.wallet.presentation.theme.WalletTheme
 import com.elixer.wallet.presentation.ui.util.Util
@@ -43,6 +48,10 @@ fun EditTransactionScreen(
     val amount = editTransactionViewModel.amount.value
     val emoji = editTransactionViewModel.emoji.value
     val keyboardController = LocalSoftwareKeyboardController.current
+
+
+    val buttonTextSize = remember { mutableStateOf(value = 14.sp) }
+
 
     fun navigateToDashboard() {
         val route = Screen.Dashboard.route
@@ -95,7 +104,7 @@ fun EditTransactionScreen(
                     OutlinedTextField(
                         value = amount,
                         singleLine = true,
-                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+                        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
                         onValueChange = { editTransactionViewModel.setAmount(it.toString()) },
                         textStyle = TextStyle(
                             color = Color.White,
@@ -135,25 +144,31 @@ fun EditTransactionScreen(
                 ) {
                     Spacer(modifier = Modifier.weight(1f))
                     Row(
-                        modifier = Modifier
-                            .padding(20.dp)
-                            .fillMaxWidth()
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        modifier = Modifier.padding(5.dp).fillMaxWidth()
                     ) {
+
+
                         Button(
                             onClick = {
                                 editTransactionViewModel.addIncome()
                                 navigateToDashboard()
-
                             },
                             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF499118))
                         ) {
                             Text(
-                                text = "Add Income",
-                                style = MaterialTheme.typography.h6,
-                                textAlign = TextAlign.Center
+                                text = stringResource(R.string.button_add_income),
+                                style = MaterialTheme.typography.button,
+                                fontSize = buttonTextSize.value,
+                                overflow = TextOverflow.Clip,
+                                maxLines = 1,
+                                onTextLayout = { textLayoutResult ->
+                                    if (textLayoutResult.didOverflowHeight) {
+                                        buttonTextSize.value = buttonTextSize.value* 0.9f
+                                    }
+                                }
                             )
                         }
-                        Spacer(modifier = Modifier.weight(1f))
                         Button(
                             onClick = {
                                 editTransactionViewModel.addExpense()
@@ -162,9 +177,16 @@ fun EditTransactionScreen(
                             colors = ButtonDefaults.buttonColors(backgroundColor = MaterialTheme.colors.onError)
                         ) {
                             Text(
-                                text = "Add Expense",
-                                style = MaterialTheme.typography.h6,
-                                textAlign = TextAlign.Center
+                                text = stringResource(R.string.button_add_expense),
+                                style = MaterialTheme.typography.button,
+                                fontSize = buttonTextSize.value,
+                                maxLines = 1,
+                                overflow = TextOverflow.Clip,
+                                onTextLayout = { textLayoutResult ->
+                                    if (textLayoutResult.didOverflowHeight) {
+                                        buttonTextSize.value = buttonTextSize.value* 0.9f
+                                    }
+                                }
                             )
                         }
                     }

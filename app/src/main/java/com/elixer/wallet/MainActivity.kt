@@ -18,6 +18,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import com.elixer.wallet.datastore.SettingsDataStore
 import com.elixer.wallet.presentation.navigation.Screen
 import com.elixer.wallet.presentation.theme.WalletTheme
 import com.elixer.wallet.presentation.ui.dashboard.DashboardScreen
@@ -27,11 +28,17 @@ import com.elixer.wallet.presentation.ui.edit_transaction.EditTransactionViewMod
 import com.elixer.wallet.presentation.ui.onboarding.OnboardingViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import javax.inject.Inject
 
 @ExperimentalCoroutinesApi
 @ExperimentalComposeUiApi
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var settingsDataStore: SettingsDataStore
+
+
     @OptIn(ExperimentalMaterialApi::class)
     @ExperimentalComposeUiApi
     @ExperimentalFoundationApi
@@ -42,7 +49,7 @@ class MainActivity : ComponentActivity() {
                 Log.e("MainActivity","MainActivity")
                 setContent {
                     val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = Screen.Dashboard.route) {
+                    NavHost(navController = navController, startDestination = Screen.OnBoarding.route) {
 
                         composable(route = Screen.EditTransaction.route,) { navBackStackEntry ->
                             val factory =
@@ -66,6 +73,7 @@ class MainActivity : ComponentActivity() {
                             DashboardScreen(
                                 viewModel = viewModel,
                                 onNavigateToEditTransactionScreen = navController::navigate,
+                                displayName = settingsDataStore.nameState.value
                             )
                         }
 
@@ -79,6 +87,7 @@ class MainActivity : ComponentActivity() {
                             OnBoardingScreen(
                                 viewModel = viewModel,
                                 onNavigateToDashboardScreen = navController::navigate,
+                                updateName = settingsDataStore::setName
                             )
                         }
 

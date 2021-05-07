@@ -17,7 +17,7 @@ data class Transaction(
     var emojiCode: String,
 
     @ColumnInfo(name = "amount")
-    var amount: Int,
+    var amount: Int = 0,
 
     @ColumnInfo(name = "date_added")
     var dateAdded: Long,
