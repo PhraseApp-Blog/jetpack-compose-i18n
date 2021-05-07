@@ -24,7 +24,6 @@ fun TransactionItem(transaction: Transaction) {
 
 
     Row(
-//        horizontalArrangement = Arrangement.,
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 10.dp)
