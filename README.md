@@ -21,10 +21,25 @@ An Android Application written purely in Kotlin with Jetpack Compose. <br> To un
 
 
 ## Find the corrresponding article on the  [Phrase blog](https://phrase.com/blog/posts/internationalizing-jetpack-compose-android-apps/)
-
+- Getting started 🏁
+- Our demo project
+- Removing hard-coded text
+- Adding resources for other languages
+- Interpolation
+    - Static text
+    - Dynamic Text
+- Plurals
+- Internationalizing Numbers
+- Internationalizing currency
+- Internationalizing dates
+- Internationalizing images
+- Localization-friendly layouts using Jetpack Compose
+- Avoid using fixed width or frames
+- Avoid fixed spaces
+- Scrollable text
+- Adding ellipsis to text
 
 ## Tech Stack
-<img src="/previews/transition.gif" align="right" width="20%"/>
 
 - [Kotlin](https://kotlinlang.org/)  
 - Dagger-Hilt (alpha) for dependency injection.
