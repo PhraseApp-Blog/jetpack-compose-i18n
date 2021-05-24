@@ -11,8 +11,7 @@ An Android Application written purely in Kotlin with Jetpack Compose. <br> To un
 <img src="./previews/introCompressed.jpg" width="700">
 </p>
 
-# Medium Articles 
-Find the corrresponding article on the  [Phrase blog](https://phrase.com/blog/posts/internationalizing-jetpack-compose-android-apps/)
+## Find the corrresponding article on the  [Phrase blog](https://phrase.com/blog/posts/internationalizing-jetpack-compose-android-apps/)
 
 
 ## Tech Stack
