@@ -1,6 +1,6 @@
 
 <p align="center">
-## Wallet App
+ <font size="5"> Wallet App</font> 
 </p>
 
 <p align="center">
