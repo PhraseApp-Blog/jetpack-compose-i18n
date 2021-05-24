@@ -1,3 +1,4 @@
+## Wallet App
 <p align="center">
 <img src="./previews/logo.png" width="150">
 </p>
