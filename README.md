@@ -8,7 +8,11 @@
 An Android Application written purely in Kotlin with Jetpack Compose. <br> To unlock the full potential of your Android app on a global scale, you need to make it localization-ready from the very start. Follow these best practices for internationalizing Android apps built with Jetpack Compose.
 
 
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![German](https://phrase.com/blog/wp-content/uploads/2021/05/german-final-loop.gif)
+  
+![English](https://phrase.com/blog/wp-content/uploads/2021/05/loop-english.gif)
+  
+![Spanish](https://phrase.com/blog/wp-content/uploads/2021/05/german-final-loop.gif)
 
 
 ## Find the corrresponding article on the  [Phrase blog](https://phrase.com/blog/posts/internationalizing-jetpack-compose-android-apps/)
